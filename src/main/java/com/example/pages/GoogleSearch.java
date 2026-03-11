@@ -12,8 +12,10 @@ public class GoogleSearch {
         this.driver = driver;
     }
 
-    public void enterSearch(String query) {
+    public void enterSearch(String query) throws Exception {
         driver.findElement(SearchInput).click();
         driver.findElement(SearchInput).sendKeys(query);
+        driver.findElement(SearchInput).submit();
+        Thread.sleep(5000);
     }
 }

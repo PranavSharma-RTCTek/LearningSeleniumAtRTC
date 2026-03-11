@@ -6,10 +6,12 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
     protected WebDriver driver;
+    protected ConfigReader configReader = new ConfigReader();
 
     @BeforeClass
-    public void setUp() {
-        driver = BrowserFactory.getDriver();
+    public void setUp() throws Exception {
+        driver = BrowserFactory.initDriver();
+        driver.get(configReader.getBaseURL());
     }
 
     @AfterClass

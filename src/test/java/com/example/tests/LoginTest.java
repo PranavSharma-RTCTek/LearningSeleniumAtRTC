@@ -5,10 +5,9 @@ import com.example.utils.BaseTest;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-
+    
     @Test
-    public void testGoogleSearch() {
-        driver.get("https://www.google.com");
+    public void testGoogleSearch() throws Exception {
         GoogleSearch googleSearch = new GoogleSearch(driver);
         googleSearch.enterSearch("Selenium WebDriver");
     }

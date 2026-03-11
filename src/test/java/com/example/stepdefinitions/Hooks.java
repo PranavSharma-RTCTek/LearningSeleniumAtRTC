@@ -15,13 +15,13 @@ public class Hooks {
     private WebDriver driver;
 
     @Before
-    public void setUp(Scenario scenario) {
+    public void setUp(Scenario scenario) throws Exception {
         System.out.println("========================================");
         System.out.println("Starting scenario: " + scenario.getName());
         System.out.println("========================================");
         
         // Initialize WebDriver
-        driver = BrowserFactory.getDriver();
+        driver = BrowserFactory.initDriver();
     }
 
     @After

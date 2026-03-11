@@ -15,8 +15,8 @@ public class LoginStepDefinitions {
     private LoginPage loginPage;
 
     @Before
-    public void setUp() {
-        driver = BrowserFactory.getDriver();
+    public void setUp() throws Exception {
+        driver = BrowserFactory.initDriver();
         loginPage = new LoginPage(driver);
     }
 
