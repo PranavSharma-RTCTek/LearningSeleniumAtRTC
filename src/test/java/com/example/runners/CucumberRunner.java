@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
  * Runs all feature files and generates reports
  */
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/login.feature",  // Path to your feature files
         glue = "com.example.stepdefinitions",
         plugin = {
                 "pretty",

@@ -1,5 +1,7 @@
 package com.example.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -76,4 +78,13 @@ public class LoginPage {
     public boolean isErrorMessageVisible() {
         return isVisible(errorMessage);
     }
+    
+    public void openingForm() {
+    	driver.get("https://demoqa.com/");
+    	driver.findElement(By.xpath("//*[@ href='forms']")).click();
+    	driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+    	driver.findElement(By.xpath("//*[@id='item-0']")).click();
+    }
+    
+    
 }
