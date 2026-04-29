@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.example.pages.methodsToRun;
@@ -19,6 +20,10 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+
+
 public class formTest extends BaseTest {
 
 	private methodsToRun red;
@@ -27,6 +32,8 @@ public class formTest extends BaseTest {
     public void setUpPageObjects() {
         red = new methodsToRun(driver);
     }
+    
+    
 
 	String inputFirstName = "Trevor";
 	String inputLastName = "Hunter";
@@ -37,7 +44,11 @@ public class formTest extends BaseTest {
 	String inputUploadPicture = ("C:\\Users\\pranav.sharma\\Downloads\\Tree.PNG");
 	String inputAddress = "707 S. Lindon Ln., Tempe, AZ);";
 	
-	@Test
+	public byte[] takeScreenshot() {
+	    return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+	}
+	
+	@Test(groups="Form Tests")
 	@Description("This test is to fill all the fields")
 	@Severity(value = SeverityLevel.CRITICAL)
 	@Epic("DemoQA Automation")
@@ -49,15 +60,11 @@ public class formTest extends BaseTest {
 	@Tag("FormTest")
 	@Link(name = "DemoQA Form", url = "https://demoqa.com/automation-practice-form")
 	@Attachment(value = "Screenshot", type = "image/png")
-	public byte[] takeScreenshot() {
-	    return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-	}
-	@Test(groups="Form Tests")
 	public void automaticFormFilling2() throws Exception {
 		red.getToForm();
 		red.enterFirstName(inputFirstName);
 		red.enterLastName(inputLastName);
-		red.enterEmailID(inputEmailID);
+		//red.enterEmailID(inputEmailID);
 		red.selectGender();
 		red.enterPhoneNumber(inputPhoneNumber);
 		red.enterDOB(inputDOB);
@@ -110,4 +117,29 @@ public class formTest extends BaseTest {
 		
 		takeScreenshot();
 	}
+	
+	@DataProvider(name = "emailData")
+    public Object[][] getEmailData() throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+        EmailData[] data = mapper.readValue(
+            new File("src/test/resources/emailData.json"),
+            EmailData[].class
+        );
+
+        Object[][] result = new Object[data.length][1];
+
+        for (int i = 0; i < data.length; i++) {
+            result[i][0] = data[i].email;
+        }
+
+        return result;
+    }
+	
+	class EmailData {
+	    public String email;
+	}
 }
+
+// allure generate --open
+
