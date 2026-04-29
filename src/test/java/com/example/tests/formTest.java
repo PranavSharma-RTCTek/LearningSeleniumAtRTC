@@ -61,6 +61,7 @@ public class formTest extends BaseTest {
 	@Link(name = "DemoQA Form", url = "https://demoqa.com/automation-practice-form")
 	@Attachment(value = "Screenshot", type = "image/png")
 	public void automaticFormFilling2() throws Exception {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		red.getToForm();
 		red.enterFirstName(inputFirstName);
 		red.enterLastName(inputLastName);
