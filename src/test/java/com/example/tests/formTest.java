@@ -1,6 +1,5 @@
 package com.example.tests;
 
-import java.util.List;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -8,7 +7,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.example.pages.methodsToRun;
@@ -21,8 +19,6 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
 
 
 public class formTest extends BaseTest {
@@ -119,29 +115,9 @@ public class formTest extends BaseTest {
 		
 		takeScreenshot();
 	}
-	
-	@DataProvider(name = "emailData")
-    public Object[][] getEmailData() throws Exception {
-
-        ObjectMapper mapper = new ObjectMapper();
-        EmailData[] data = mapper.readValue(
-            new File("src/test/resources/emailData.json"),
-            EmailData[].class
-        );
-
-        Object[][] result = new Object[data.length][1];
-
-        for (int i = 0; i < data.length; i++) {
-            result[i][0] = data[i].email;
-        }
-
-        return result;
-    }
-	
-	class EmailData {
-	    public String email;
-	}
 }
 
 // allure generate --open
+
+
 
