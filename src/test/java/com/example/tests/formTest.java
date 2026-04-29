@@ -58,11 +58,17 @@ public class formTest extends BaseTest {
 	@Link(name = "DemoQA Form", url = "https://demoqa.com/automation-practice-form")
 	@Attachment(value = "Screenshot", type = "image/png")
 	public void automaticFormFilling2() throws Exception {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		red.getToForm();
-		red.enterFirstName(inputFirstName);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+		WebElement firstName = wait.until(
+		    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
+		);
+
+		firstName.sendKeys("Pranav");
+		//red.enterFirstName(inputFirstName);
 		red.enterLastName(inputLastName);
-		//red.enterEmailID(inputEmailID);
+		red.enterEmailID(inputEmailID);
 		red.selectGender();
 		red.enterPhoneNumber(inputPhoneNumber);
 		red.enterDOB(inputDOB);
