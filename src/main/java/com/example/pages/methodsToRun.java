@@ -10,23 +10,23 @@ public class methodsToRun {
 	private WebDriver driver;
 
     // Public locators for step definitions
-    public By formButton = By.xpath("//*[@ href='/forms']");
-    public By practiceFormButton = By.xpath("//*[@ class='element-list accordion-collapse collapse show']");
-    public By firstName = By.xpath("//*[@ id='firstName']");
-    public By lastName = By.xpath("//*[@ id='lastName']");
-    public By emailID = By.xpath("//*[@ id='userEmail']");
-    public By maleGender = By.xpath("//*[@ id='gender-radio-1']");
-    public By phoneNumber = By.xpath("//*[@ id='userNumber']");
-    public By dateOfBirth = By.xpath("//*[@ id='dateOfBirthInput']");
-    public By subjects = By.xpath("//*[@ id='subjectsInput']");
-    public By hobbySports = By.xpath("//*[@ id='hobbies-checkbox-1']");
-    public By hobbyRead = By.xpath("//*[@ id='hobbies-checkbox-2']");
-    public By hobbyMusic = By.xpath("//*[@ id='hobbies-checkbox-3']");
-    public By picture = By.xpath("//*[@ id='uploadPicture']");
-    public By address = By.xpath("//*[@ id='currentAddress']");
-    public By stateSelect = By.xpath("//*[@ class='col-md-4 col-sm-12']");
-    public By citySelect = By.xpath("//*[@ id = 'city']");
-    public By submitButton = By.xpath("//*[@ id='submit']");
+    public By formButton = By.xpath("//*[@href='/forms']");
+    public By practiceFormButton = By.xpath("//*[@class='element-list accordion-collapse collapse show']");
+    public By firstName = By.xpath("//*[@id='firstName']");
+    public By lastName = By.xpath("//*[@id='lastName']");
+    public By emailID = By.xpath("//*[@id='userEmail']");
+    public By maleGender = By.xpath("//*[@id='gender-radio-1']");
+    public By phoneNumber = By.xpath("//*[@id='userNumber']");
+    public By dateOfBirth = By.xpath("//*[@id='dateOfBirthInput']");
+    public By subjects = By.xpath("//*[@id='subjectsInput']");
+    public By hobbySports = By.xpath("//*[@id='hobbies-checkbox-1']");
+    public By hobbyRead = By.xpath("//*[@id='hobbies-checkbox-2']");
+    public By hobbyMusic = By.xpath("//*[@id='hobbies-checkbox-3']");
+    public By picture = By.xpath("//*[@id='uploadPicture']");
+    public By address = By.xpath("//*[@id='currentAddress']");
+    public By stateSelect = By.xpath("//*[@class='col-md-4 col-sm-12']");
+    public By citySelect = By.xpath("//*[@id = 'city']");
+    public By submitButton = By.xpath("//*[@id='submit']");
 
     public methodsToRun(WebDriver driver) {
         this.driver = driver;
