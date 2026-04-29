@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import java.util.List;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
