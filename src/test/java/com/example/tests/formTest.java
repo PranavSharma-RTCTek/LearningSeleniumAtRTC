@@ -62,7 +62,11 @@ public class formTest extends BaseTest {
 	public void automaticFormFilling2() throws Exception {
 		red.getToForm();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
+		
+		System.out.println("Current URL: " + driver.getCurrentUrl());
+		System.out.println("Page title: " + driver.getTitle());
+		System.out.println(driver.getPageSource());
+		
 		WebElement firstName = wait.until(
 		    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 		);
