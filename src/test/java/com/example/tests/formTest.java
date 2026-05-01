@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -82,7 +84,7 @@ public class formTest extends BaseTest {
 			    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 			);
 
-			firstName.sendKeys("Trevor");
+			firstName.sendKeys("Tree");
 			System.out.println("Hello I have written the name");
 	}
 		 System.out.println("Try catch working");
@@ -140,6 +142,18 @@ public class formTest extends BaseTest {
 		Assert.assertFalse(actualGender.isEmpty(), "Gender not populated");
 		
 		takeScreenshot();
+	}
+	
+	@AfterMethod
+	public void captureFailureScreenshot(ITestResult result) {
+	    if (ITestResult.FAILURE == result.getStatus()) {
+	        saveScreenshotPNG();
+	    }
+	}
+
+	@Attachment(value = "Failure Screenshot", type = "image/png")
+	public byte[] saveScreenshotPNG() {
+	    return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 }
 
