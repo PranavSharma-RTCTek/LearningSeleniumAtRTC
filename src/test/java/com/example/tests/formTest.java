@@ -60,7 +60,6 @@ public class formTest extends BaseTest {
 	@Tag("Regression")
 	@Tag("FormTest")
 	@Link(name = "DemoQA Form", url = "https://demoqa.com/automation-practice-form")
-	@Attachment(value = "Screenshot", type = "image/png")
 	public void automaticFormFilling2() throws Exception {
 		//red.getToForm();
 		
@@ -141,16 +140,8 @@ public class formTest extends BaseTest {
 
 		Assert.assertFalse(actualGender.isEmpty(), "Gender not populated");
 		
-		takeScreenshot();
 	}
 	
-	@AfterMethod
-	public void captureFailureScreenshot(ITestResult result) {
-	    if (ITestResult.FAILURE == result.getStatus()) {
-	        saveScreenshotPNG();
-	        System.out.println("Screenshot taken");
-	    }
-	}
 
 	@Attachment(value = "Failure Screenshot", type = "image/png")
 	public byte[] saveScreenshotPNG() {
