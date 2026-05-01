@@ -77,7 +77,7 @@ public class formTest extends BaseTest {
 		    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 		);
 
-		firstName.sendKeys("Trevor");
+		firstName.sendKeys("Tree");
 	}catch(Exception e) {
 		 System.out.println("I am inside catch block");
 		WebElement firstName = wait.until(
