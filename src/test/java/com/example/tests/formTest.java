@@ -85,6 +85,7 @@ public class formTest extends BaseTest {
 			firstName.sendKeys("Trevor");
 			System.out.println("Hello I have written the name");
 	}
+		 System.out.println("Try catch working");
 		//red.enterFirstName(inputFirstName);
 		red.enterLastName(inputLastName);
 		red.enterEmailID(inputEmailID);
