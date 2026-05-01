@@ -148,6 +148,7 @@ public class formTest extends BaseTest {
 	public void captureFailureScreenshot(ITestResult result) {
 	    if (ITestResult.FAILURE == result.getStatus()) {
 	        saveScreenshotPNG();
+	        System.out.println("Screenshot taken");
 	    }
 	}
 
