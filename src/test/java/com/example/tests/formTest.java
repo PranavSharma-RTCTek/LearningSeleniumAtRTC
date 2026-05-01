@@ -61,17 +61,18 @@ public class formTest extends BaseTest {
 	@Attachment(value = "Screenshot", type = "image/png")
 	public void automaticFormFilling2() throws Exception {
 		red.getToForm();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
 		
 		System.out.println("Current URL: " + driver.getCurrentUrl());
-		System.out.println("Page title: " + driver.getTitle());
-		System.out.println(driver.getPageSource());
+		 attachScreenshot("Base URL Loaded Successfully");
+		//System.out.println("Page title: " + driver.getTitle());
+		//System.out.println(driver.getPageSource());
 		
 		WebElement firstName = wait.until(
 		    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 		);
 
-		firstName.sendKeys("Pranav");
+		firstName.sendKeys("Trevor");
 		//red.enterFirstName(inputFirstName);
 		red.enterLastName(inputLastName);
 		red.enterEmailID(inputEmailID);

@@ -16,9 +16,8 @@ public class BaseTest {
     public void setUp() throws Exception {
         driver = BrowserFactory.initDriver();
         driver.get(configReader.getBaseURL());
-       
+		 attachScreenshot("Base URL Loaded Successfully");
 
-        attachScreenshot("Base URL Loaded Successfully");
     }
     
     @Attachment(value = "{stepName}", type = "image/png")
