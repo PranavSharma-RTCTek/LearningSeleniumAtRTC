@@ -61,6 +61,8 @@ public class formTest extends BaseTest {
 	@Attachment(value = "Screenshot", type = "image/png")
 	public void automaticFormFilling2() throws Exception {
 		//red.getToForm();
+		
+		driver.findElement(By.xpath("//*[@ class='text-center']")).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		
 		System.out.println("Current URL: " + driver.getCurrentUrl());
