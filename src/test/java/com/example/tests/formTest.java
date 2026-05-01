@@ -62,19 +62,29 @@ public class formTest extends BaseTest {
 	public void automaticFormFilling2() throws Exception {
 		//red.getToForm();
 		
-		driver.findElement(By.xpath("//*[@ class='text-center']")).click();
+		//driver.findElement(By.xpath("//*[@ class='text-center']")).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		
 		System.out.println("Current URL: " + driver.getCurrentUrl());
 		 attachScreenshot("Base URL Loaded Successfully");
 		//System.out.println("Page title: " + driver.getTitle());
 		//System.out.println(driver.getPageSource());
-		
+		 try {
+			 System.out.println("I am inside try block");
 		WebElement firstName = wait.until(
 		    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 		);
 
 		firstName.sendKeys("Trevor");
+	}catch(Exception e) {
+		 System.out.println("I am inside catch block");
+		WebElement firstName = wait.until(
+			    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
+			);
+
+			firstName.sendKeys("Trevor");
+			System.out.println("Hello I have written the name");
+	}
 		//red.enterFirstName(inputFirstName);
 		red.enterLastName(inputLastName);
 		red.enterEmailID(inputEmailID);
