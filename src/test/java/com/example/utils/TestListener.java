@@ -13,6 +13,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
+        FailureScreenshotHolder.clear();
         test = extent.createTest(result.getMethod().getMethodName());
         test.log(Status.INFO, "Test started: " + result.getMethod().getMethodName());
     }
@@ -27,16 +28,13 @@ public class TestListener implements ITestListener {
         test.log(Status.FAIL, "Test failed: " + result.getMethod().getMethodName());
         test.log(Status.FAIL, result.getThrowable());
 
-        // Capture screenshot on failure
-        Object testClass = result.getInstance();
-        if (testClass instanceof BaseTest) {
-            BaseTest baseTest = (BaseTest) testClass;
-            String screenshotPath = ScreenshotUtils.captureScreenshot(
-                    baseTest.driver,
-                    result.getMethod().getMethodName()
-            );
-            if (screenshotPath != null) {
+        // Screenshot is taken in BaseTest.tearDown before driver.quit(); path is stored here for Extent.
+        String screenshotPath = FailureScreenshotHolder.takeLastFailureScreenshot();
+        if (screenshotPath != null) {
+            try {
                 test.addScreenCaptureFromPath(screenshotPath, "Failure Screenshot");
+            } catch (Exception e) {
+                test.log(Status.WARNING, "Could not attach screenshot: " + e.getMessage());
             }
         }
     }

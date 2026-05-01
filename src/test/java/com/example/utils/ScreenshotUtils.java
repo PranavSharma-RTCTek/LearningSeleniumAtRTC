@@ -23,7 +23,7 @@ public class ScreenshotUtils {
             destFile.getParentFile().mkdirs();
             
             FileUtils.copyFile(srcFile, destFile);
-            return screenshotPath;
+            return destFile.getAbsolutePath();
         } catch (Exception e) {
             System.out.println("Failed to capture screenshot: " + e.getMessage());
             return null;

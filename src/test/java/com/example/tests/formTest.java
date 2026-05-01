@@ -76,14 +76,14 @@ public class formTest extends BaseTest {
 		    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 		);
 
-		firstName.sendKeys("Tree");
+		firstName.sendKeys("Trevor");
 	}catch(Exception e) {
 		 System.out.println("I am inside catch block");
 		WebElement firstName = wait.until(
 			    ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))
 			);
 
-			firstName.sendKeys("Tree");
+			firstName.sendKeys("Trevor");
 			System.out.println("Hello I have written the name");
 	}
 		 System.out.println("Try catch working");
@@ -128,7 +128,9 @@ public class formTest extends BaseTest {
 		String actualDOB = driver.findElement(By.xpath("((//div[contains(@class,'modal-dialog')]//following::tbody/tr)[5]/child::td)[2]")).getText();
 		String actualSubjects = driver.findElement(By.xpath("((//div[contains(@class,'modal-dialog')]//following::tbody/tr)[6]/child::td)[2]")).getText();
 		String actualAddress = driver.findElement(By.xpath("((//div[contains(@class,'modal-dialog')]//following::tbody/tr)[9]/child::td)[2]")).getText();
-
+		
+		attachScreenshot("Test Failed - Screenshot");
+		
 		Assert.assertEquals(actualName, inputFirstName + " " + inputLastName, "Name mismatch");
 		Assert.assertEquals(actualEmail, inputEmailID, "Email mismatch");
 		Assert.assertEquals(actualMobile, inputPhoneNumber, "Mobile mismatch");

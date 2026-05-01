@@ -3,6 +3,8 @@ package com.example.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -62,9 +64,20 @@ public class methodsToRun {
     	driver.findElement(phoneNumber).sendKeys(phNo);
     }
     
-    public void enterDOB(String DOB) throws Exception{
-    	driver.findElement(dateOfBirth).click();
-    	driver.findElement(dateOfBirth).sendKeys(DOB);
+    public void enterDOB(String DOB) throws Exception {
+        WebElement dobField = driver.findElement(dateOfBirth);
+        dobField.click();
+        // Field is readonly / React-controlled — clear() does not reliably empty it
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(
+                "const el = arguments[0];"
+                        + "el.removeAttribute('readonly');"
+                        + "el.value = '';"
+                        + "el.dispatchEvent(new Event('input', { bubbles: true }));"
+                        + "el.dispatchEvent(new Event('change', { bubbles: true }));",
+                dobField);
+        dobField.sendKeys(DOB);
+        dobField.sendKeys(Keys.ESCAPE);
     }
     
     public void enterSubjects(String subjectsList) throws Exception{
