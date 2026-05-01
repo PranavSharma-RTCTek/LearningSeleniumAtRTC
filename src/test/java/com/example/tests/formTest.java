@@ -60,8 +60,8 @@ public class formTest extends BaseTest {
 	@Link(name = "DemoQA Form", url = "https://demoqa.com/automation-practice-form")
 	@Attachment(value = "Screenshot", type = "image/png")
 	public void automaticFormFilling2() throws Exception {
-		red.getToForm();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+		//red.getToForm();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		
 		System.out.println("Current URL: " + driver.getCurrentUrl());
 		 attachScreenshot("Base URL Loaded Successfully");
